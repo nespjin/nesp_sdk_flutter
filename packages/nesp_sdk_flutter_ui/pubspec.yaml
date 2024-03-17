@@ -1,6 +1,6 @@
-name: nesp_sdk_flutter_core
-description: "The core library of the NESP SDK for Flutter"
-version: 0.0.1-dev.2
+name: nesp_sdk_flutter_ui
+description: "The ui library of the NESP SDK for Flutter"
+version: 0.0.1-dev.1
 repository: https://github.com/nespjin/nesp_sdk_flutter
 
 environment:
@@ -8,9 +8,20 @@ environment:
   flutter: ">=1.17.0"
 
 dependencies:
+  connectivity: ^3.0.6
   flutter:
     sdk: flutter
-  provider: ^6.1.2
+  flutter_localizations:
+    sdk: flutter
+  intl: any
+  flutter_keyboard_visibility: ^6.0.0
+  fluttertoast: ^8.2.4
+  nesp_sdk_dart_core: ^0.0.1-dev.2
+  nesp_sdk_dart_math: ^0.0.1-dev.1
+  nesp_sdk_flutter_core: ^0.0.1-dev.1
+  nesp_sdk_flutter_module: ^0.0.1-dev.1
+  nesp_sdk_flutter_router: ^0.0.1-dev.1
+  webview_flutter: ^4.7.0
 
 dev_dependencies:
   flutter_test:
@@ -22,6 +33,7 @@ dev_dependencies:
 
 # The following section is specific to Flutter packages.
 flutter:
+  generate: true
 
   # To add assets to your package, add an assets section, like this:
   # assets:

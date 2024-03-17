@@ -1,0 +1,19 @@
+{
+  "status_loading": "加载中",
+  "status_empty_data": "暂无数据",
+  "status_net_lose": "请检查网络",
+  "status_retry": "请点击重试",
+  "status_failure": "操作失败",
+  "cancel": "取消",
+  "confirm": "确认",
+  "dialog_updater_title": "新版本: {versionName}",
+  "@dialog_updater_title": {
+    "placeholders": {
+      "versionName": {
+        "type": "String"
+      }
+    }
+  },
+  "msg_update_failed": "升级失败",
+  "download_failed": "下载失败"
+}
