@@ -1,6 +1,6 @@
 name: nesp_sdk_flutter_ui
 description: "The ui library of the NESP SDK for Flutter"
-version: 0.0.1-dev.1
+version: 0.0.1-dev.2
 repository: https://github.com/nespjin/nesp_sdk_flutter
 
 environment:
@@ -22,6 +22,7 @@ dependencies:
   nesp_sdk_flutter_module: ^0.0.1-dev.1
   nesp_sdk_flutter_router: ^0.0.1-dev.1
   webview_flutter: ^4.7.0
+  visibility_detector: ^0.4.0+2
 
 dev_dependencies:
   flutter_test:

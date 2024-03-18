@@ -5,6 +5,7 @@ import 'package:connectivity/connectivity.dart';
 import 'package:flutter/material.dart';
 import 'package:nesp_sdk_dart_core/nesp_sdk_dart_core.dart';
 import 'package:nesp_sdk_flutter_ui/src/ui_state.dart';
+import 'package:visibility_detector/visibility_detector.dart';
 
 abstract base class ViewModel with WidgetsBindingObserver {
   ViewModel(
@@ -78,6 +79,9 @@ abstract base class ViewModel with WidgetsBindingObserver {
   @mustCallSuper
   @protected
   void onNetworkAvailableChanged(bool isNetworkAvailable) {}
+
+  @mustCallSuper
+  void onVisibilityChanged(VisibilityInfo info) {}
 
   ScaffoldFeatureController<SnackBar, SnackBarClosedReason>? showSnackBar(
       SnackBar snackBar) {

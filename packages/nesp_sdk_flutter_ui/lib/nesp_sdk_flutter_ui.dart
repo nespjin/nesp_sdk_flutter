@@ -17,5 +17,9 @@ export 'src/ui_state_store.dart';
 export 'src/view_model.dart';
 export 'src/webview_screen.dart';
 export 'src/widget.dart';
+export 'src/list_group.dart';
+export 'src/list_item.dart';
+export 'src/dash_line.dart';
+export 'src/change_notifier_view_model_content.dart';
 
 export 'painting.dart';
