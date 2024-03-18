@@ -1,11 +1,5 @@
 import 'package:flutter/material.dart';
 
-///
-/// Author: <a href="mailto:dyjinzl@chint.com">JinZhaolu</a>
-/// Time: Created 2022/12/22 下午12:39
-/// Description:
-///
-
 class Text2 extends Text {
   Text2(
     String data, {

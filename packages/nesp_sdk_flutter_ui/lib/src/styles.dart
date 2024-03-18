@@ -2,9 +2,6 @@
 import 'package:flutter/material.dart';
 
 ///
-/// Author: <a href="mailto:dyjinzl@chint.com">JinZhaolu</a>
-/// Time: Created 2022/12/22 上午9:49
-/// Description:
 /// Defines the app themes, uses Material Design3.
 /// Material Design3 Reference: https://m3.material.io/
 /// Material Design Reference: https://material.io/

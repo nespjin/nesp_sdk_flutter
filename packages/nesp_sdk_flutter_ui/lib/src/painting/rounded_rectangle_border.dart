@@ -1,11 +1,5 @@
 import 'package:flutter/material.dart';
 
-///
-/// Author: <a href="mailto:dyjinzl@chint.com">JinZhaolu</a>
-/// Time: Created 2023/1/29 上午9:58
-/// Description:
-///
-
 class TriangleRoundedRectangleBorder extends RoundedRectangleBorder {
   const TriangleRoundedRectangleBorder({
     super.side,

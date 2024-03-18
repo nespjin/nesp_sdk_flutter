@@ -2,12 +2,6 @@ import 'dart:collection';
 
 import 'package:flutter/foundation.dart';
 
-///
-/// Author: <a href="mailto:dyjinzl@chint.com">JinZhaolu</a>
-/// Time: Created 2023/01/03 14:21:25
-/// Description:
-///
-
 class LruCache<K, V> {
   LruCache(int maxSize) {
     if (maxSize <= 0) {

@@ -1,12 +1,6 @@
  import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-///
-/// Author: <a href="mailto:dyjinzl@chint.com">JinZhaolu</a>
-/// Time: Created 2023/1/28 下午4:33
-/// Description:
-///
-
 /// The widget is never rebuilt, only used to use S behavior,
 /// not to access the state of S.
 class NeverRebuildSelector<S> extends StatelessWidget {

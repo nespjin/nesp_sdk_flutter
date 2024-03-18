@@ -4,12 +4,6 @@ import 'package:flutter/foundation.dart';
 
 import 'package:nesp_sdk_flutter_cache/src/cache.dart';
 
-///
-/// Author: <a href="mailto:dyjinzl@chint.com">JinZhaolu</a>
-/// Time: Created 2023/01/03 17:12:42
-/// Description:
-///
-
 class SimpleCache<K, V> {
   SimpleCache(int maxSize, Duration liveTime) {
     if (maxSize <= 0) {
