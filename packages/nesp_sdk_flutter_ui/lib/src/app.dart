@@ -4,7 +4,6 @@ import 'package:nesp_sdk_flutter_core/nesp_sdk_flutter_core.dart';
 import 'package:nesp_sdk_flutter_module/nesp_sdk_flutter_module.dart';
 import 'package:nesp_sdk_flutter_router/nesp_sdk_flutter_router.dart';
 
-
 typedef ShellScreenBuilder = Widget Function(
     BuildContext context, GoRouterState state, Widget child);
 
@@ -100,7 +99,7 @@ class Application extends StatelessWidget {
 
       // Merge modules routes
       if (shellScreenBuilder != null) {
-        moduleManager!.updateRoutes(childRoutes);
+        moduleManager!.updateRoutes(context, childRoutes);
 
         final shellRoute = ShellRoute(
           navigatorKey: shellNavigatorKey,
@@ -109,7 +108,7 @@ class Application extends StatelessWidget {
         );
         rootRoutes.add(shellRoute);
       } else {
-        moduleManager!.updateRoutes(rootRoutes);
+        moduleManager!.updateRoutes(context, childRoutes);
       }
     }
 

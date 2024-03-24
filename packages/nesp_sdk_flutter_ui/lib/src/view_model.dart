@@ -13,7 +13,9 @@ abstract base class ViewModel with WidgetsBindingObserver {
     this.isObserveWidgetsBinding = true,
     this.isObserveConnectivity = true,
   }) {
-    initialize(context);
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      if (context.mounted) initialize(context);
+    });
   }
 
   final BuildContext context;

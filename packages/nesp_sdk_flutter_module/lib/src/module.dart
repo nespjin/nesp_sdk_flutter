@@ -12,9 +12,10 @@ abstract base class Module {
 
   FutureOr<void> onInit() async {}
 
-  FutureOr<void> onLocaleChanged(Locale locale) async {}
+  FutureOr<void> onLocaleChanged(BuildContext context, Locale locale) async {}
 
-  FutureOr<void> onLocalesChanged(List<Locale> locales) async {}
+  FutureOr<void> onLocalesChanged(
+      BuildContext context, List<Locale> locales) async {}
 
   void onUpdateLocalizationsDelegates(
       List<LocalizationsDelegate> delegates) async {
@@ -30,5 +31,6 @@ abstract base class Module {
     return [];
   }
 
-  FutureOr<void> onUpdateRoutes(List<RouteBase> routes) async {}
+  FutureOr<void> onUpdateRoutes(
+      BuildContext context, List<RouteBase> routes) async {}
 }

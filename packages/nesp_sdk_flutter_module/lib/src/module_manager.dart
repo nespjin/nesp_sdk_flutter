@@ -28,9 +28,10 @@ final class ModuleManager {
   /// Returns `null` if the module is not registered.
   Module? getModule(String id) => _store[id];
 
-  FutureOr<void> updateRoutes(List<RouteBase> routes) async {
+  FutureOr<void> updateRoutes(
+      BuildContext context, List<RouteBase> routes) async {
     for (var module in _store.values) {
-      await module.onUpdateRoutes(routes);
+      await module.onUpdateRoutes(context, routes);
     }
   }
 
@@ -44,16 +45,17 @@ final class ModuleManager {
     }
   }
 
-  FutureOr<void> changeLocale(Locale locale) async {
+  FutureOr<void> changeLocale(BuildContext context, Locale locale) async {
     for (var module in _store.values) {
-      await module.onLocaleChanged(locale);
+      await module.onLocaleChanged(context, locale);
     }
   }
 
   /// Called when the application locales is changed.
-  FutureOr<void> changeLocales(List<Locale> locales) async {
+  FutureOr<void> changeLocales(
+      BuildContext context, List<Locale> locales) async {
     for (var module in _store.values) {
-      await module.onLocalesChanged(locales);
+      await module.onLocalesChanged(context, locales);
     }
   }
 

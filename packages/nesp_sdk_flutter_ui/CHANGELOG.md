@@ -1,3 +1,8 @@
+## 0.0.1-dev.3
+
+* Lazy to call ViewModel's initialize method.
+* Add BuildContext for module manager callbacks.
+
 ## 0.0.1-dev.2
 
 * Add ListItem, ListGroup, DashLine and ChangeNotifierViewModelContent.
