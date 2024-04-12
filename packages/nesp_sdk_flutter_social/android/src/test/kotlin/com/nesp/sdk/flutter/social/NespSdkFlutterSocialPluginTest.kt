@@ -1,4 +1,4 @@
-package com.example.nesp_sdk_flutter_social
+package com.nesp.sdk.flutter.social
 
 import io.flutter.plugin.common.MethodCall
 import io.flutter.plugin.common.MethodChannel

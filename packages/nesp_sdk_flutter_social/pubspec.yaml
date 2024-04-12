@@ -39,6 +39,9 @@ flutter:
     # then add platforms following the instruction here:
     # https://flutter.dev/docs/development/packages-and-plugins/developing-packages#plugin-platforms
     # -------------------
+      android:
+        package: com.nesp.sdk.flutter.social
+        pluginClass: NespSdkFlutterSocialPlugin
       ios:
         pluginClass: NespSdkFlutterSocialPlugin
     # -------------------
