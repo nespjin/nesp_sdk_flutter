@@ -1,4 +1,4 @@
-# flutter_plugin_nesp_social
+# nesp_sdk_flutter_social
 
 A Flutter plugin for social.
 
@@ -37,14 +37,65 @@ A Flutter plugin for social.
 > ### 打开其他软件
 > <img height="540" width="270" align=center src = "./doc/images/android-open-other.gif"/>
 
-## 用法 
+### 配置应用
 
-该项目基于[Flutter](https://flutter.io/developing-packages/), 是一个特定功能的Flutter插件，包含Android和IOS平台实现。
+将以下内容添加到适用于 iOS 的应用项目的 info.plist 文件中。
 
-为了帮助你开始使用Flutter, 请参阅
-[在线文档](https://flutter.io/docs),该文档提供关于移动开发的教程、示例、指导并且包含全部的API参考。
- 
+```xml
+    <key>LSApplicationQueriesSchemes</key>
+	<array>
+        <!-- 微信 URL Scheme 白名单-->
+        <string>wechat</string>
+        <string>weixin</string>
 
+        <!-- 新浪微博 URL Scheme 白名单-->
+        <string>sinaweibohd</string>
+        <string>sinaweibo</string>
+        <string>sinaweibosso</string>
+        <string>weibosdk</string>
+        <string>weibosdk2.5</string>
+
+        <!-- QQ、Qzone URL Scheme 白名单-->
+        <string>mqqapi</string>
+        <string>mqq</string>
+        <string>mqqOpensdkSSoLogin</string>
+        <string>mqqconnect</string>
+        <string>mqqopensdkdataline</string>
+        <string>mqqopensdkgrouptribeshare</string>
+        <string>mqqopensdkfriend</string>
+        <string>mqqopensdkapi</string>
+        <string>mqqopensdkapiV2</string>
+        <string>mqqopensdkapiV3</string>
+        <string>mqzoneopensdk</string>
+        <string>wtloginmqq</string>
+        <string>wtloginmqq2</string>
+        <string>mqqwpa</string>
+        <string>mqzone</string>
+        <string>mqzonev2</string>
+        <string>mqzoneshare</string>
+        <string>wtloginqzone</string>
+        <string>mqzonewx</string>
+        <string>mqzoneopensdkapiV2</string>
+        <string>mqzoneopensdkapi19</string>
+        <string>mqzoneopensdkapi</string>
+        <string>mqzoneopensdk</string>
+
+        <!-- 支付宝  URL Scheme 白名单-->
+        <string>alipay</string>
+        <string>alipayshare</string>
+
+    </array>
+```
+
+将以下内容添加到适用于 Android 的应用项目的 AndroidManifest.xml 文件中。
+```xml
+<queries>
+    <intent>
+        <action android:name="android.intent.action.MAIN"/>
+    </intent>
+</queries>
+```
+## 功能
 
 ### 加好友
 

@@ -1,13 +1,4 @@
-# flutter_plugin_nesp_social
-
-**This repository will be moved to [nesp_sdk_flutter](https://github.com/nespjin/nesp_sdk_flutter) and deleted!!!**
-
-**This repository will be moved to [nesp_sdk_flutter](https://github.com/nespjin/nesp_sdk_flutter) and deleted!!!**
-
-**This repository will be moved to [nesp_sdk_flutter](https://github.com/nespjin/nesp_sdk_flutter) and deleted!!!**
-
-
-
+# nesp_sdk_flutter_social
 
 A Flutter plugin for social.
 
@@ -49,19 +40,12 @@ This plugin supports Android and iOS.
 
 ## Getting Started 
 
-This project is a starting point for a Flutter
-[plug-in package](https://flutter.io/developing-packages/),
-a specialized package that includes platform-specific implementation code for
-Android and/or iOS.
+### Config App
 
-For help getting started with Flutter, view our 
-[online documentation](https://flutter.io/docs), which offers tutorials, 
-samples, guidance on mobile development, and a full API reference.
+Add the following to your app project's info.plist file for iOS.
 
-
-### For iOS
 ```xml
-<key>LSApplicationQueriesSchemes</key>
+    <key>LSApplicationQueriesSchemes</key>
 	<array>
         <!-- 微信 URL Scheme 白名单-->
         <string>wechat</string>
@@ -103,12 +87,18 @@ samples, guidance on mobile development, and a full API reference.
         <string>alipay</string>
         <string>alipayshare</string>
 
-     </array>
+    </array>
 ```
 
-### For Android
+Add the following to your app project's AndroidManifest.xml file for Android.
 ```xml
-
+<queries>
+    <intent>
+        <action android:name="android.intent.action.MAIN"/>
+    </intent>
+</queries>
+```
+## Features
 
 ### Join QQ Friend
 
@@ -126,7 +116,6 @@ try {
 ### Join QQ Group
 
 ```dart
-
 try {
    isSuccess = await FlutterNespSocial.joinQQGroup(
         androidKey:  "input your android key",
@@ -137,13 +126,11 @@ try {
     } on PlatformException catch (e) {
         //do something
     }
-
 ```
 
 ### Open Weibo User
 
 ```dart
-
 try {
     isSuccess =  await FlutterNespSocial.openWeiboUser(
         uid: “input your weibo user id”,
@@ -151,12 +138,11 @@ try {
     } on PlatformException catch (e) {
      // do something
     }
-
 ```
 
 ### Open Other App
-``` dart
 
+``` dart
 try {
       isCalledOtherApp = await FlutterNespSocial.openOtherApp(
         androidPackageName: "input your android app package name",
@@ -166,5 +152,4 @@ try {
     } on PlatformException catch (e) {
      //do something
     }
-
 ```
