@@ -11,7 +11,7 @@ This plugin supports Android and iOS.
 
 ****
 
-## Screentshots
+## Screenshots
 >### Join QQ Friend
 >
 > <img height="540" width="270" align=center src = "./doc/images/android-join-qq-friend.gif"/>
@@ -39,6 +39,15 @@ This plugin supports Android and iOS.
 > <img height="540" width="270" align=center src = "./doc/images/android-open-other.gif"/>
 
 ## Getting Started 
+
+### Install
+Add this to your package's pubspec.yaml file:
+
+```yaml
+dependencies:
+  # Adds nesp_sdk_flutter_social to your project
+  nesp_sdk_flutter_social: ^0.0.1
+```
 
 ### Config App
 

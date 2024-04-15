@@ -37,6 +37,17 @@ A Flutter plugin for social.
 > ### 打开其他软件
 > <img height="540" width="270" align=center src = "./doc/images/android-open-other.gif"/>
 
+## 开始
+
+### 安装
+将下面的代码添加到包的 pubspec.yaml 文件中:
+
+```yaml
+dependencies:
+  # Adds nesp_sdk_flutter_social to your project
+  nesp_sdk_flutter_social: ^0.0.1
+```
+
 ### 配置应用
 
 将以下内容添加到适用于 iOS 的应用项目的 info.plist 文件中。
