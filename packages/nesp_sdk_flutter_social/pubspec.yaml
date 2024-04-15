@@ -1,7 +1,7 @@
 name: nesp_sdk_flutter_social
 description: "A new Flutter plugin project."
 version: 0.0.1
-homepage:
+repository: https://github.com/nespjin/nesp_sdk_flutter/
 
 environment:
   sdk: '>=3.3.1 <4.0.0'
