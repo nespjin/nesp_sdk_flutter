@@ -113,7 +113,7 @@ Add the following to your app project's AndroidManifest.xml file for Android.
 
 ```dart
 try {
-      isSuccess = await FlutterNespSocial.joinQQFriend(
+      isSuccess = await NespSdkFlutterSocial.joinQQFriend(
         qqFriendNumber: "input your qq friend number",
       );
       
@@ -126,7 +126,7 @@ try {
 
 ```dart
 try {
-   isSuccess = await FlutterNespSocial.joinQQGroup(
+   isSuccess = await NespSdkFlutterSocial.joinQQGroup(
         androidKey:  "input your android key",
         groupUin:  "input your group uin",
         iosKey: "input your ios key",
@@ -141,7 +141,7 @@ try {
 
 ```dart
 try {
-    isSuccess =  await FlutterNespSocial.openWeiboUser(
+    isSuccess =  await NespSdkFlutterSocial.openWeiboUser(
         uid: “input your weibo user id”,
       );
     } on PlatformException catch (e) {
@@ -153,7 +153,7 @@ try {
 
 ``` dart
 try {
-      isCalledOtherApp = await FlutterNespSocial.openOtherApp(
+      isCalledOtherApp = await NespSdkFlutterSocial.openOtherApp(
         androidPackageName: "input your android app package name",
         androidClassName: "input your android activity class name",
         iosAppUrl: "input your IOS APP URL",

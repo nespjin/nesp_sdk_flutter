@@ -112,7 +112,7 @@ dependencies:
 
 ```dart
 try {
-      isSuccess = await FlutterNespSocial.joinQQFriend(
+      isSuccess = await NespSdkFlutterSocial.joinQQFriend(
         qqFriendNumber: "input your qq friend number",
       );
       
@@ -126,7 +126,7 @@ try {
 ```dart
 
 try {
-   isSuccess = await FlutterNespSocial.joinQQGroup(
+   isSuccess = await NespSdkFlutterSocial.joinQQGroup(
         androidKey:  "input your android key",
         groupUin:  "input your group uin",
         iosKey: "input your ios key",
@@ -143,7 +143,7 @@ try {
 ```dart
 
 try {
-    isSuccess =  await FlutterNespSocial.openWeiboUser(
+    isSuccess =  await NespSdkFlutterSocial.openWeiboUser(
         uid: “输入你要打开的用户ID”,//打开网页微博,鼠标放在头像下面的关注或粉丝时就能在右下方看见UID
       );
     } on PlatformException catch (e) {
@@ -156,7 +156,7 @@ try {
 ``` dart
 
 try {
-      isCalledOtherApp = await FlutterNespSocial.openOtherApp(
+      isCalledOtherApp = await NespSdkFlutterSocial.openOtherApp(
         androidPackageName: "你要打开的应用包名",
         androidClassName: "你要打开的应用Activity的类名",
         iosAppUrl: "你要打开的IOS应用URL",
