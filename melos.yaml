@@ -1,0 +1,103 @@
+name: password_manager
+
+sdkPath: .fvm/flutter_sdk
+
+packages:
+  - "packages/*"
+  - "packages/*/*"
+  - "packages/*/*/*"
+
+ignore:
+  - "packages/**/example"
+  - "packages/nesp_sdk_flutter_old"
+
+scripts:
+  lint:all:
+    run: melos run analyze && melos run format
+    description: Run all static analysis checks.
+
+  analyze:
+    # We are setting the concurrency to 1 because a higher concurrency can crash
+    # the analysis server on low performance machines (like GitHub Actions).
+    run: |
+      melos exec -c 1 -- \
+        dart analyze . --fatal-infos
+    description: |
+      Run `dart analyze` in all packages.
+       - Note: you can also rely on your IDEs Dart Analysis / Issues window.
+
+  format:
+    run: |
+      dart pub global run flutter_plugin_tools format
+    #       dart pub global run flutter_plugin_tools format && \
+    #       swiftformat .
+    description: |
+      Build a specific app for Android.
+       - Requires `flutter_plugin_tools` (`dart pub global activate flutter_plugin_tools`).
+  #       - Requires `clang-format` (can be installed via Brew on macOS)
+  build:all:
+    run: |
+      melos run build:app_ios --no-select && \
+      melos run build:app_android --no-select
+    description: Build all apps.
+
+  build:app_android:
+    run: |
+      melos exec -c 6 --fail-fast -- \
+        "flutter build apk"
+    description: Build a specific app for Android.
+    select-package:
+      dir-exists:
+        - android
+      scope: "*app*"
+
+  build:app_ios:
+    run: |
+      melos exec -c 6 --fail-fast -- \
+        "flutter build ios --no-codesign"
+    description: Build a specific app for iOS.
+    select-package:
+      dir-exists:
+        - ios
+      scope: "*app*"
+
+  clean:deep:
+    run: git clean -x -d -f -q
+    description: Clean things very deeply, can be used to establish "pristine checkout" status.
+
+  qualitycheck:
+    run: |
+      melos run clean:deep && \
+      melos clean && \
+      melos bootstrap && \
+      melos run lint:all && \
+      melos run build:all && \
+      melos run test:all
+    description: Run all targets generally expected in CI for a full local quality check.
+
+  test:all:
+    run: |
+      melos run test --no-select
+    description: |
+      Run all tests available.
+
+  gen:res:all:
+    run: |
+      melos exec -c 6 --fail-fast --  "flr run" && \
+      melos run format --no-select
+
+  gen:l10n:all:
+    run: |
+      melos exec -c 6 --fail-fast -- "flutter gen-l10n" --no-select && \
+      melos run format --no-select
+    select-package:
+      file-exists: "l10n.yaml"
+    description: Generate the l10n messages for all the supported packages.
+
+  # Additional cleanup lifecycle script, executed when `melos clean` is run.
+  postclean: >
+    melos exec -c 6 -- "flutter clean"
+
+  builder:
+    run: |
+      melos exec -c 1  --  "flutter pub run build_runner build --delete-conflicting-outputs"

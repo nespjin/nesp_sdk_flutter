@@ -1,0 +1,7 @@
+arb-dir: l10n
+template-arb-file: strings_en.arb
+output-class: Strings
+output-localization-file: strings.dart
+output-dir: lib/src/l10n
+synthetic-package: false
+nullable-getter: false

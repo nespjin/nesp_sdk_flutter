@@ -1,0 +1,19 @@
+{
+  "status_loading": "Loading",
+  "status_empty_data": "no data",
+  "status_net_lose": "Please check the network",
+  "status_retry": "Please click to try again",
+  "status_failure": "Operation failed",
+  "cancel": "Cancel",
+  "confirm": "Confirm",
+  "dialog_updater_title": "New Version: {versionName}",
+  "@dialog_updater_title": {
+    "placeholders": {
+      "versionName": {
+        "type": "String"
+      }
+    }
+  },
+  "msg_update_failed": "Update Failed",
+  "download_failed": "Download Failed"
+}

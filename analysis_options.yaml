@@ -1,0 +1,112 @@
+# This file configures the static analysis results for your project (errors,
+# warnings, and lints).
+#
+# This enables the 'recommended' set of lints from `package:lints`.
+# This set helps identify many issues that may lead to problems when running
+# or consuming Dart code, and enforces writing Dart using a single, idiomatic
+# style and format.
+#
+# If you want a smaller set of lints you can change this to specify
+# 'package:lints/core.yaml'. These are just the most critical lints
+# (the recommended set includes the core lints).
+# The core lints are also what is used by pub.dev for scoring packages.
+
+include: package:flutter_lints/flutter.yaml
+
+linter:
+  rules:
+    # - avoid_field_initializers_in_const_classes
+    # - diagnostic_describe_all_properties
+    # - matching_super_parameters
+    # - no_runtimeType_toString
+    # - one_member_abstracts
+    # - prefer_constructors_over_static_methods
+    # - prefer_expression_function_bodies
+    # - public_member_api_docs
+    # - unawaited_futures
+    # - use_late_for_private_fields_and_variables
+    - always_declare_return_types
+    - always_use_package_imports
+    - annotate_redeclares
+    - avoid_catching_errors
+    - avoid_classes_with_only_static_members
+    - avoid_dynamic_calls
+    - avoid_empty_else
+    - avoid_equals_and_hash_code_on_mutable_classes
+    - avoid_type_to_string
+    - cancel_subscriptions
+    - combinators_ordering
+    - comment_references
+    - conditional_uri_does_not_exist
+    - directives_ordering
+    - discarded_futures
+    - file_names
+    - invalid_case_patterns
+    - library_names
+    - lines_longer_than_80_chars
+    - missing_whitespace_between_adjacent_strings
+    - no_adjacent_strings_in_list
+    - no_literal_bool_comparisons
+    - only_throw_errors
+    - prefer_const_constructors
+    - prefer_const_declarations
+    - prefer_const_literals_to_create_immutables
+    - prefer_contains
+    - prefer_final_in_for_each
+    - prefer_final_locals
+    - prefer_foreach
+    - prefer_mixin
+    - prefer_null_aware_method_calls
+    - prefer_void_to_null
+    - sized_box_shrink_expand
+    - sort_constructors_first
+    - sort_pub_dependencies
+    - sort_unnamed_constructors_first
+    - test_types_in_equals
+    - throw_in_finally
+    - tighten_type_of_initializing_formals
+    - type_annotate_public_apis
+    - unnecessary_await_in_return
+    - unnecessary_breaks
+    - unnecessary_lambdas
+    - unnecessary_library_directive
+    - unnecessary_null_aware_operator_on_extension_on_nullable
+    - unnecessary_null_checks
+    - unnecessary_parenthesis
+    - unnecessary_raw_strings
+    - unnecessary_statements
+    - use_colored_box
+    - use_decorated_box
+    - use_enums
+    - use_if_null_to_convert_nulls_to_bools
+    - use_is_even_rather_than_modulo
+    - use_named_constants
+    - use_setters_to_change_properties
+    - use_string_buffers
+    - use_test_throws_matchers
+    - use_to_and_as_if_applicable
+
+analyzer:
+  exclude:
+    - "**.edl.dart"
+    - build/**
+    - json_annotation/**
+    - json_serializable/**
+    - lib/src/**/*.g.dart
+    - lib/src/*.g.dart
+    - lib/src/view/*.event.dart
+    - lib/src/view/*.view.dart
+    - thirdparty/flutter_jscore-1.0.0/**
+    - thirdparty/json_serializable/**
+
+  errors:
+    dead_code: info
+    invalid_assignment: warning
+    library_prefixes: error
+    missing_return: error
+
+# For more information about the core and recommended set of lints, see
+# https://dart.dev/go/core-lints
+
+# For additional information about configuring this file, see
+# https://dart.dev/guides/language/analysis-options
