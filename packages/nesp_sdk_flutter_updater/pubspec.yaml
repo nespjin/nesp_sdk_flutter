@@ -1,6 +1,6 @@
 name: nesp_sdk_flutter_updater
 description: "The updater library of the NESP SDK for Flutter"
-version: 0.0.1-dev.2
+version: 0.0.1-dev.3
 repository: https://github.com/nespjin/nesp_sdk_flutter
 
 environment:
@@ -15,7 +15,7 @@ dependencies:
     sdk: flutter
   intl: any
   nesp_sdk_dart_file_downloader: ^0.0.1-dev.2
-  nesp_sdk_flutter_ui: ^0.0.1-dev.1
+  nesp_sdk_flutter_ui: ^0.0.1-dev.4
 
 dev_dependencies:
   flutter_test:

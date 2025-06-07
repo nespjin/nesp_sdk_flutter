@@ -1,6 +1,6 @@
 name: nesp_sdk_flutter_social
 description: A Flutter Plugin for social app associated.
-version: 0.0.2
+version: 0.0.2+1
 repository: https://github.com/nespjin/nesp_sdk_flutter/
 
 environment:

@@ -1,6 +1,6 @@
 name: nesp_sdk_flutter_router
 description: "The router library of the NESP SDK for Flutter"
-version: 0.0.1-dev.3
+version: 0.0.1-dev.4
 repository: https://github.com/nespjin/nesp_sdk_flutter
 
 environment:
@@ -12,7 +12,7 @@ dependencies:
     sdk: flutter
   go_router: ^13.2.1
   nesp_sdk_dart_dtx: ^0.0.1-dev.1
-  nesp_sdk_flutter_core: ^0.0.1-dev.3
+  nesp_sdk_flutter_core: ^0.0.1-dev.4
 
 dev_dependencies:
   flutter_test:
