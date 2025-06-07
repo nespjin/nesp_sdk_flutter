@@ -12,6 +12,11 @@ ignore:
   - "packages/nesp_sdk_flutter_old"
 
 scripts:
+  publish:
+    run: |
+      melos exec -c 1 -- flutter pub publish --server https://pub.dev -f 
+    description: Publish all packages to pub.dev.
+    
   lint:all:
     run: melos run analyze && melos run format
     description: Run all static analysis checks.
