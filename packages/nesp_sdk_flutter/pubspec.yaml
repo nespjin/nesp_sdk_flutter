@@ -1,6 +1,6 @@
 name: nesp_sdk_flutter
 description: "NESP SDK for Flutter"
-version: 0.0.1-dev.2
+version: 0.0.1-dev.3
 repository: https://github.com/nespjin/nesp_sdk_flutter
 
 environment:
@@ -14,8 +14,8 @@ dependencies:
   nesp_sdk_flutter_core: ^0.0.1-dev.4
   nesp_sdk_flutter_module: ^0.0.1-dev.4
   nesp_sdk_flutter_router: ^0.0.1-dev.4
-  nesp_sdk_flutter_ui: ^0.0.1-dev.4
-  nesp_sdk_flutter_updater: ^0.0.1-dev.3
+  nesp_sdk_flutter_ui: ^0.0.1-dev.5
+  nesp_sdk_flutter_updater: ^0.0.1-dev.4
 
 dev_dependencies:
   flutter_test:

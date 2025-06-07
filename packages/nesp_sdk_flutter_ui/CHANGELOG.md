@@ -1,3 +1,7 @@
+## 0.0.1-dev.5
+
+ - **FEAT**(core): add ui state persistence and other features.
+
 ## 0.0.1-dev.4
 
  - **DOCS**: initialize project structure and add basic configurations.
