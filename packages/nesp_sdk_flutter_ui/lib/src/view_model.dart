@@ -4,10 +4,11 @@ import 'dart:io';
 import 'package:connectivity/connectivity.dart';
 import 'package:flutter/material.dart';
 import 'package:nesp_sdk_dart_core/nesp_sdk_dart_core.dart';
+import 'package:nesp_sdk_flutter_ui/src/ui_state_store.dart';
 import 'package:nesp_sdk_flutter_ui/src/ui_state.dart';
 import 'package:visibility_detector/visibility_detector.dart';
 
-abstract base class ViewModel with WidgetsBindingObserver {
+abstract class ViewModel with WidgetsBindingObserver {
   ViewModel(
     this.context, {
     this.isObserveWidgetsBinding = true,
@@ -108,8 +109,7 @@ abstract base class ViewModel with WidgetsBindingObserver {
   }
 }
 
-abstract base class ChangeNotifierViewModel extends ViewModel
-    with ChangeNotifier {
+abstract class ChangeNotifierViewModel extends ViewModel with ChangeNotifier {
   ChangeNotifierViewModel(
     super.context, {
     super.isObserveWidgetsBinding,
@@ -123,27 +123,100 @@ abstract base class ChangeNotifierViewModel extends ViewModel
   }
 }
 
-abstract base class StateViewModel<State extends UiState>
+abstract class StateViewModel<S extends UiState>
     extends ChangeNotifierViewModel {
   StateViewModel(
     super.context, {
     super.isObserveWidgetsBinding,
     super.isObserveConnectivity,
-  });
+    S? initialState,
+    S? emptyState,
+    this.keepState = false,
+    this.isUserScope = false,
+    String? stateKey,
+  }) {
+    this.initialState = initialState ?? createInitialState();
+    this.emptyState = emptyState ?? createEmptyState() ?? this.initialState;
+    this.stateKey = stateKey ?? runtimeType.toString();
+    onRestoreState();
+  }
 
-  late State _state = getInitialState();
+  /// 是否为用户作用域
+  ///
+  /// 默认为false, 若为true, 则状态将保存在用户作用域中, 当用户退出时, 状态将被清除
+  final bool isUserScope;
 
-  State get state => _state;
+  /// 是否保存状态
+  ///
+  /// 默认为 false, 当设置为保存状态时, 状态将保存在 [UiStateStore] 中,
+  /// 每次重新创建 ViewModel 时, 会从 [UiStateStore] 中恢复状态
+  final bool keepState;
 
-  @protected
-  State getInitialState();
+  /// UI 状态的 key
+  ///
+  /// 默认为当前 ViewModel 的类型名, 用于存储和恢复 UI 状态
+  late final String stateKey;
 
-  @protected
-  void setState(State state) {
-    if (isDisposed || state == _state) {
-      return;
+  /// UI 状态存储器
+  UiStateStore? stateStore;
+
+  late S _state = initialState;
+
+  /// UI 状态，初始值为 [initialState]
+  S get state => _state;
+
+  /// 初始状态，若通过构造参数传入的值为 null，则默认为 [createInitialState] 方法返回值
+  late final S initialState;
+
+  /// 空状态
+  ///
+  /// 当构造参数传入 [emptyState] 值为 null 时，默认为 [createEmptyState] 方法返回值，
+  /// 若 [createEmptyState] 方法返回值为 null 时，默认为 [initialState]
+  ///
+  /// 当 [clearState] 被调用时，将重置为 [emptyState]
+  late final S emptyState;
+
+  /// 创建初始状态，默认抛出 [UnimplementedError]，当通过构造参数传入 [initialState] 值为 null 时调用
+  S createInitialState() => throw UnimplementedError();
+
+  /// 创建空状态
+  S? createEmptyState() => null;
+
+  /// 设置状态
+  void setState(S state, {bool notify = true}) {
+    if (isDisposed) return;
+
+    try {
+      if (state == _state) return;
+    } on Error catch (_) {
+      // The _state not initialized
     }
+
     _state = state;
-    notifyListeners();
+    if (notify) notifyListeners();
+  }
+
+  @protected
+  void onSaveState() {
+    if (!keepState) return;
+
+    if (stateStore == null) {
+      throw Exception('The stateStore is null, please set it first.');
+    }
+    stateStore!.setState(stateKey, _state);
+  }
+
+  @protected
+  void onRestoreState() {
+    if (!keepState) return;
+    stateStore ??= UiStateStoreProvider.of(context).store;
+    final state = stateStore!.getState<S>(stateKey);
+    if (state != null) setState(state);
+  }
+
+  @override
+  void dispose() {
+    onSaveState();
+    super.dispose();
   }
 }

@@ -11,9 +11,17 @@
  */
 import 'package:flutter/widgets.dart';
 
-final class TooltipShapeBorder extends ShapeBorder {
-  const TooltipShapeBorder();
+final class TooltipShape extends ShapeBorder {
+  const TooltipShape({
+    this.arrowAlignment = Alignment.topRight,
+  });
 
+  /// 箭头对齐方式
+  ///
+  /// 仅支持以下值：
+  /// [Alignment.topRight] - 箭头在右上角
+  /// [Alignment.topLeft] - 箭头在左上角
+  final Alignment arrowAlignment;
   final BorderSide _side = BorderSide.none;
   final BorderRadiusGeometry _borderRadius = BorderRadius.zero;
 
@@ -32,18 +40,50 @@ final class TooltipShapeBorder extends ShapeBorder {
     final path = Path();
     final rrect = _borderRadius.resolve(textDirection).toRRect(rect);
 
-    path.moveTo(0, 10);
-    path.quadraticBezierTo(0, 0, 10, 0);
-    path.lineTo(rrect.width - 30, 0);
-    path.lineTo(rrect.width - 20, -10);
-    path.lineTo(rrect.width - 10, 0);
-    path.quadraticBezierTo(rrect.width, 0, rrect.width, 10);
-    path.lineTo(rrect.width, rrect.height - 10);
-    path.quadraticBezierTo(
-        rrect.width, rrect.height, rrect.width - 10, rrect.height);
-    path.lineTo(10, rrect.height);
-    path.quadraticBezierTo(0, rrect.height, 0, rrect.height - 10);
+    final baseX = rrect.left;
+    final baseY = rrect.top;
 
+    path.moveTo(baseX + 0, baseY + 10);
+    path.quadraticBezierTo(baseX + 0, baseY + 0, baseX + 10, baseY + 0);
+
+    if (arrowAlignment == Alignment.topRight) {
+      path.lineTo(baseX + rrect.width - 30, baseY + 0);
+      path.lineTo(baseX + rrect.width - 20, baseY + -10);
+      path.lineTo(baseX + rrect.width - 10, baseY + 0);
+    } else if (arrowAlignment == Alignment.topLeft) {
+      path.lineTo(baseX + 20, baseY + -10);
+      path.lineTo(baseX + 30, baseY + 0);
+      path.lineTo(baseX + rrect.width - 10, baseY + 0);
+    } else {
+      throw Exception('Not support arrow alignment: $arrowAlignment');
+    }
+
+    path.quadraticBezierTo(
+      baseX + rrect.width,
+      baseY + 0,
+      baseX + rrect.width,
+      baseY + 10,
+    );
+    path.lineTo(
+      baseX + rrect.width,
+      baseY + rrect.height - 10,
+    );
+    path.quadraticBezierTo(
+      baseX + rrect.width,
+      baseY + rrect.height,
+      baseX + rrect.width - 10,
+      baseY + rrect.height,
+    );
+    path.lineTo(
+      baseX + 10,
+      baseY + rrect.height,
+    );
+    path.quadraticBezierTo(
+      baseX + 0,
+      baseY + rrect.height,
+      baseX + 0,
+      baseY + rrect.height - 10,
+    );
     return path;
   }
 

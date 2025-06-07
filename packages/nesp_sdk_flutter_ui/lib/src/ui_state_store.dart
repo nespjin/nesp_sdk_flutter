@@ -1,3 +1,6 @@
+import 'package:flutter/material.dart';
+import 'package:nesp_sdk_flutter_ui/nesp_sdk_flutter_ui.dart';
+
 // class UiStateNode<K> {
 //   const UiStateNode({
 //     required this.key,
@@ -7,8 +10,6 @@
 //   final K key;
 //   final UiState state;
 // }
-
-import 'package:nesp_sdk_flutter_ui/src/ui_state.dart';
 
 /// A set of ui States with the same id
 ///
@@ -30,9 +31,9 @@ class UiStateGroup {
 class UiStateStore {
   final Map<String /** group id */, UiStateGroup> _store = {};
   static const String _keyGroupDefault =
-      'nesp_sdk_flutter_ui/ui_state_store/group/default';
+      'flutter_sdk_package/ui_state_store/group/default';
   static const String _keyGroupUser =
-      'nesp_sdk_flutter_ui/ui_state_store/group/user';
+      'flutter_sdk_package/ui_state_store/group/user';
 
   void setState(String key, UiState state) {
     setStateOfGroup(_keyGroupDefault, key, state);
@@ -106,5 +107,37 @@ class UiStateStore {
 
   void clear() {
     _store.clear();
+  }
+}
+
+class UiStateStoreProvider extends InheritedWidget {
+  const UiStateStoreProvider({
+    super.key,
+    required this.store,
+    required super.child,
+  });
+
+  final UiStateStore store;
+
+  static UiStateStoreProvider of(BuildContext context, {bool listen = false}) {
+    late UiStateStoreProvider? provider;
+    if (listen) {
+      provider =
+          context.dependOnInheritedWidgetOfExactType<UiStateStoreProvider>();
+    } else {
+      provider = context.findAncestorWidgetOfExactType<UiStateStoreProvider>();
+    }
+
+    if (provider == null) {
+      throw Exception('UiStateStoreProvider not found');
+    }
+
+    return provider;
+  }
+
+  @override
+  bool updateShouldNotify(covariant InheritedWidget oldWidget) {
+    return this != oldWidget ||
+        store != (oldWidget as UiStateStoreProvider).store;
   }
 }
