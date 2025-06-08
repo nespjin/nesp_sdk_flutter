@@ -4,7 +4,6 @@
 # BSD-style license that can be found in the LICENSE file.
 
 
-
 import logging
 import os
 from shutil import copyfile
@@ -16,6 +15,7 @@ PACKAGE_VERSION = '0.0.1-dev.1'
 
 def update_pubspec(pubspec_file_path):
     sdk_version = config.SDK_VERSION
+    package_name = ''
     content = ''
     with open(pubspec_file_path, "r") as f:
         is_in_environment = False
@@ -23,8 +23,10 @@ def update_pubspec(pubspec_file_path):
             if line.strip().startswith('#') or line.strip().startswith("dependencies:"):
                 continue
 
-            if line.startswith("description:"):
-                line = f"description: {config.DESCRIPTION}\n"
+            if line.startswith("name:"):
+                package_name = line.split(":")[1].strip()
+            elif line.startswith("description:"):
+                line = f"description: {config.DESCRIPTION.replace("$PACKAGE_NAME", package_name)}\n"
             elif line.startswith("version:"):
                 line = f"version: {PACKAGE_VERSION}\n"
                 line += f"repository: {config.REPOSITORY}\n"
@@ -111,6 +113,8 @@ def main():
 
     packages_path = os.path.join(workspace_dir_path, "packages")
     for package_name in package_names:
+        if not package_name.startswith(config.PACKAGE_NAME_PREFIX):
+            package_name = config.PACKAGE_NAME_PREFIX + '_' + package_name
         create_package(workspace_dir_path, packages_path, package_name)
 
 
